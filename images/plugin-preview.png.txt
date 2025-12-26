@@ -1,0 +1,4 @@
+PLACEHOLDER: Reemplaza este archivo con tu plugin-preview.png
+Tamaño: 800x600px
+Formato: PNG o JPG
+Screenshot del plugin en acción
