@@ -1,0 +1,3 @@
+PLACEHOLDER: Reemplaza este archivo con tu logo.png
+Tamaño: 200x200px
+Formato: PNG con transparencia
