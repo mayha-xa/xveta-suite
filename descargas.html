@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Descargar XVETA Suite</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .download-hero {
+      padding: 10rem 2rem 4rem;
+      text-align: center;
+    }
+    
+    .download-main-card {
+      background: var(--dark-2);
+      border-radius: 20px;
+      padding: 4rem 3rem;
+      max-width: 600px;
+      margin: 0 auto 3rem;
+      border: 2px solid var(--primary);
+      box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3);
+      text-align: center;
+    }
+    
+    .logo-container {
+      margin-bottom: 3rem;
+    }
+    
+    .logo-container img {
+      max-width: 200px;
+      height: auto;
+    }
+    
+    .download-btn-large {
+      width: 100%;
+      padding: 1.5rem;
+      font-size: 1.3rem;
+      margin: 2rem 0 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+    
+    .terms-link {
+      color: var(--primary);
+      text-decoration: underline;
+      cursor: pointer;
+    }
+    
+    .terms-link:hover {
+      color: var(--secondary);
+    }
+    
+    /* Modal de Términos */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      overflow: auto;
+    }
+    
+    .modal-content {
+      background-color: var(--dark-2);
+      margin: 5% auto;
+      padding: 3rem;
+      border: 2px solid var(--primary);
+      border-radius: 20px;
+      width: 90%;
+      max-width: 800px;
+      max-height: 80vh;
+      overflow-y: auto;
+      position: relative;
+    }
+    
+    .close-modal {
+      color: var(--gray);
+      float: right;
+      font-size: 2rem;
+      font-weight: bold;
+      cursor: pointer;
+      line-height: 1;
+    }
+    
+    .close-modal:hover {
+      color: var(--primary);
+    }
+    
+    .modal-content h2 {
+      color: var(--light);
+      margin-bottom: 1.5rem;
+    }
+    
+    .modal-content h3 {
+      color: var(--primary);
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+    
+    .modal-content p, .modal-content li {
+      color: var(--gray);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+    
+    .accept-terms-btn {
+      width: 100%;
+      margin-top: 2rem;
+    }
+    
+    .installation-steps {
+      margin-top: 3rem;
+    }
+    
+    .step {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+      align-items: flex-start;
+    }
+    
+    .step-number {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    
+    .step-content h4 {
+      color: var(--light);
+      margin-bottom: 0.5rem;
+    }
+    
+    .step-content p {
+      color: var(--gray);
+      line-height: 1.6;
+    }
+    
+    .step-content strong {
+      color: var(--primary);
+    }
+    
+    .download-card {
+      background: var(--dark-2);
+      border-radius: 20px;
+      padding: 3rem;
+      max-width: 800px;
+      margin: 0 auto 3rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .cta-box {
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+      border: 2px solid var(--primary);
+      border-radius: 15px;
+      padding: 2rem;
+      text-align: center;
+      margin-top: 3rem;
+    }
+    
+    .cta-box h3 {
+      color: var(--light);
+      margin-bottom: 1rem;
+    }
+    
+    .cta-box p {
+      color: var(--gray);
+      margin-bottom: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navegación -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <div class="module-carousel">
+          <div class="module-carousel-track">
+            <span class="module-name">DESPERDICIO X</span>
+            <span class="module-name">PROYECTO X</span>
+            <span class="module-name">OPTIMIZADOR X</span>
+            <span class="module-name">TABLERO X</span>
+            <span class="module-name">VETAS X</span>
+            <span class="module-name">REVELAR X</span>
+            <span class="module-name">TAGS X</span>
+            <span class="module-name">PINTAR X</span>
+          </div>
+        </div>
+      </div>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html" class="nav-link">Inicio</a></li>
+        <li><a href="descargas.html" class="nav-link">Descargar</a></li>
+        <li><a href="tutoriales.html" class="nav-link">Tutoriales</a></li>
+        <li><a href="comprar.html" class="nav-link btn-comprar">Comprar $1 USD/mes</a></li>
+      </ul>
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Descargas -->
+  <section class="download-hero">
+    <div class="container">
+      <h1 class="section-title">
+        <span class="gradient-text">Descargar XVETA Suite</span>
+      </h1>
+    </div>
+  </section>
+
+  <!-- Descarga Principal -->
+  <section class="section">
+    <div class="container">
+      
+      <div class="download-main-card">
+        <!-- Logo -->
+        <div class="logo-container">
+          <img src="images/plugin-preview.png" alt="XVETA Suite Logo">
+        </div>
+        
+        <!-- Botón de Descarga -->
+        <button class="btn btn-primary btn-glow download-btn-large" onclick="iniciarDescarga()">
+          <span>⬇️</span>
+          <span>Descargar XVETA-Suite-v1.0.3.rbz</span>
+        </button>
+        
+        <!-- Términos -->
+        <p style="color: var(--gray); font-size: 0.9rem; margin-top: 1rem;">
+          Al descargar, aceptas los <span class="terms-link" onclick="mostrarTerminos()">términos y condiciones</span>
+        </p>
+      </div>
+
+      <!-- Instrucciones de Instalación -->
+      <div class="download-card">
+        <h3 style="margin-bottom: 2rem;">📝 Instrucciones de Instalación</h3>
+        
+        <div class="installation-steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <h4>Descargar el archivo</h4>
+              <p>Haz clic en el botón de descarga y guarda el archivo .rbz en tu computadora</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <h4>Abrir SketchUp</h4>
+              <p>Inicia SketchUp 2020 o superior</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <h4>Instalar extensión</h4>
+              <p>Ve a: <strong>Window → Extension Manager → Install Extension</strong></p>
+              <p>Selecciona el archivo XVETA-Suite-v1.0.3.rbz</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">4</div>
+            <div class="step-content">
+              <h4>Adquiere tu licencia</h4>
+              <p>Ve a: <strong>Extensions → XVETA Suite → Activar Licencia</strong></p>
+              <p>Ingresa tu código de licencia adquirido</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">5</div>
+            <div class="step-content">
+              <h4>¡Listo para trabajar!</h4>
+              <p>Reinicia SketchUp y todos los módulos estarán disponibles</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- CTA Comprar Licencia -->
+        <div class="cta-box">
+          <h3>¿Tienes una licencia activa?</h3>
+          <p>Adquiere tu licencia mensual y comienza a usar XVETA Suite</p>
+          <a href="comprar.html" class="btn btn-primary">Comprar Licencia - $1 USD/mes</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Modal de Términos y Condiciones -->
+  <div id="termsModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="cerrarTerminos()">&times;</span>
+      <h2>Términos y Condiciones de Uso - XVETA Suite</h2>
+      
+      <p><strong>Última actualización:</strong> 3 de enero de 2026</p>
+      
+      <p>Por favor, lea estos términos y condiciones cuidadosamente antes de descargar y utilizar XVETA Suite. Al descargar, instalar o utilizar este software, usted acepta estar sujeto a estos términos.</p>
+      
+      <h3>1. Licencia de Uso</h3>
+      <p>XVETA Suite se proporciona bajo una licencia de suscripción mensual. El software es propiedad exclusiva de sus creadores y está protegido por leyes de derechos de autor internacionales.</p>
+      <ul>
+        <li>La licencia otorga el derecho de uso no exclusivo e intransferible del software</li>
+        <li>Un código de licencia válido es válido para una (1) instalación activa por dispositivo</li>
+        <li>No está permitido compartir, distribuir o revender códigos de licencia</li>
+      </ul>
+      
+      <h3>2. Restricciones de Uso</h3>
+      <p>Al utilizar XVETA Suite, usted acepta NO:</p>
+      <ul>
+        <li>Descompilar, realizar ingeniería inversa o intentar extraer el código fuente del software</li>
+        <li>Distribuir, sublicenciar, alquilar, prestar o transferir el software a terceros</li>
+        <li>Modificar, adaptar o crear trabajos derivados basados en el software</li>
+        <li>Eliminar o alterar avisos de propiedad intelectual del software</li>
+        <li>Usar el software para propósitos ilegales o no autorizados</li>
+      </ul>
+      
+      <h3>3. Suscripción y Pagos</h3>
+      <ul>
+        <li>La suscripción tiene un costo de $1 USD por mes</li>
+        <li>Los pagos se procesan de forma segura a través de procesadores de pago certificados</li>
+        <li>La suscripción se renueva automáticamente cada mes hasta que sea cancelada</li>
+        <li>Puede cancelar su suscripción en cualquier momento sin penalización</li>
+        <li>No se realizan reembolsos proporcionales por cancelaciones antes del fin del período pagado</li>
+      </ul>
+      
+      <h3>4. Propiedad Intelectual</h3>
+      <p>Todo el contenido, diseño, gráficos, código fuente y funcionalidades de XVETA Suite son propiedad exclusiva de sus creadores y están protegidos por:</p>
+      <ul>
+        <li>Leyes de derechos de autor internacionales</li>
+        <li>Tratados de propiedad intelectual</li>
+        <li>Patentes de software aplicables</li>
+      </ul>
+      
+      <h3>5. Causa Social</h3>
+      <p>Un porcentaje significativo de los ingresos generados por las suscripciones de XVETA Suite se destina a programas de apoyo social para comunidades vulnerables. Al suscribirse, usted contribuye directamente a estas iniciativas.</p>
+      
+      <h3>6. Garantías y Limitaciones de Responsabilidad</h3>
+      <p>El software se proporciona "TAL CUAL" sin garantías de ningún tipo, ya sean expresas o implícitas, incluyendo pero no limitado a:</p>
+      <ul>
+        <li>Garantías de comerciabilidad</li>
+        <li>Idoneidad para un propósito particular</li>
+        <li>No infracción de derechos de terceros</li>
+      </ul>
+      
+      <p>En ningún caso los creadores serán responsables por:</p>
+      <ul>
+        <li>Daños directos, indirectos, incidentales o consecuentes</li>
+        <li>Pérdida de datos, beneficios o interrupción del negocio</li>
+        <li>Cualquier otro daño derivado del uso o imposibilidad de uso del software</li>
+      </ul>
+      
+      <h3>7. Compatibilidad y Requisitos del Sistema</h3>
+      <ul>
+        <li>XVETA Suite requiere SketchUp 2020 o superior</li>
+        <li>Compatible con Windows y macOS</li>
+        <li>Se requiere conexión a Internet para la verificación de licencia</li>
+      </ul>
+      
+      <h3>8. Actualizaciones y Soporte</h3>
+      <ul>
+        <li>Las actualizaciones del software están incluidas en la suscripción activa</li>
+        <li>El soporte técnico se proporciona por correo electrónico</li>
+        <li>Los tiempos de respuesta varían según la complejidad de la consulta</li>
+      </ul>
+      
+      <h3>9. Privacidad y Datos</h3>
+      <p>La recopilación y uso de datos personales se rige por nuestra Política de Privacidad. Al usar XVETA Suite, usted acepta que:</p>
+      <ul>
+        <li>Se recopile información de identificación del dispositivo para validación de licencia</li>
+        <li>Se almacenen datos de uso anónimos para mejora del producto</li>
+        <li>No se comparta información personal con terceros sin su consentimiento</li>
+      </ul>
+      
+      <h3>10. Terminación</h3>
+      <p>Nos reservamos el derecho de terminar o suspender el acceso al software inmediatamente, sin previo aviso, por:</p>
+      <ul>
+        <li>Violación de estos términos y condiciones</li>
+        <li>Uso fraudulento o no autorizado del software</li>
+        <li>Falta de pago de la suscripción</li>
+      </ul>
+      
+      <h3>11. Modificaciones de los Términos</h3>
+      <p>Nos reservamos el derecho de modificar estos términos en cualquier momento. Las modificaciones entrarán en vigor inmediatamente después de su publicación. El uso continuado del software después de dichas modificaciones constituye su aceptación de los nuevos términos.</p>
+      
+      <h3>12. Ley Aplicable y Jurisdicción</h3>
+      <p>Estos términos se regirán e interpretarán de acuerdo con las leyes aplicables, sin dar efecto a ningún principio de conflictos de leyes.</p>
+      
+      <h3>13. Contacto</h3>
+      <p>Para preguntas sobre estos términos y condiciones, puede contactarnos a través de:</p>
+      <ul>
+        <li>Sitio web: https://mayha-xa.github.io/xveta-suite/</li>
+        <li>Sección de soporte en el sitio web</li>
+      </ul>
+      
+      <p style="margin-top: 2rem;"><strong>Al hacer clic en "Aceptar" o al descargar XVETA Suite, usted reconoce que ha leído, comprendido y acepta estar sujeto a estos Términos y Condiciones.</strong></p>
+      
+      <button class="btn btn-primary accept-terms-btn" onclick="aceptarTerminos()">Acepto los Términos y Condiciones</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2025 XVETA Suite. Todos los derechos reservados.</p>
+        <p>Desarrollado con ❤️ por XAM</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/particles.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/main.js"></script>
+  
+  <script>
+    let terminosAceptados = false;
+    
+    function mostrarTerminos() {
+      document.getElementById('termsModal').style.display = 'block';
+    }
+    
+    function cerrarTerminos() {
+      document.getElementById('termsModal').style.display = 'none';
+    }
+    
+    function aceptarTerminos() {
+      terminosAceptados = true;
+      cerrarTerminos();
+      alert('Has aceptado los términos y condiciones. Ahora puedes descargar XVETA Suite.');
+    }
+    
+    function iniciarDescarga() {
+      if (!terminosAceptados) {
+        alert('Debes aceptar los términos y condiciones antes de descargar.');
+        mostrarTerminos();
+        return;
+      }
+      
+      // Aquí iría la lógica real de descarga
+      window.location.href = 'ruta-al-archivo/XVETA-Suite-v1.0.3.rbz';
+    }
+    
+    // Cerrar modal al hacer clic fuera
+    window.onclick = function(event) {
+      const modal = document.getElementById('termsModal');
+      if (event.target == modal) {
+        cerrarTerminos();
+      }
+    }
+  </script>
+
+</body>
+</html>
