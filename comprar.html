@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comprar XVETA Suite - $1 USD/mes</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://js.stripe.com/v3/"></script>
+  <style>
+    .pricing-hero {
+      padding: 10rem 2rem 4rem;
+      text-align: center;
+    }
+    
+    .pricing-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    .pricing-card {
+      background: var(--dark-2);
+      border-radius: 20px;
+      padding: 3rem;
+      border: 2px solid var(--primary);
+      box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3);
+      margin: 2rem 0;
+    }
+    
+    .price-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    
+    .price-amount {
+      font-size: 4rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin: 1rem 0;
+    }
+    
+    .price-period {
+      color: var(--gray);
+      font-size: 1.2rem;
+    }
+    
+    .features-list {
+      list-style: none;
+      margin: 2rem 0;
+    }
+    
+    .features-list li {
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .features-list li:last-child {
+      border-bottom: none;
+    }
+    
+    .feature-icon {
+      width: 30px;
+      height: 30px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    
+    .payment-form {
+      background: var(--dark-3);
+      border-radius: 15px;
+      padding: 2rem;
+      margin: 2rem 0;
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: var(--light);
+      font-weight: 500;
+    }
+    
+    .form-input {
+      width: 100%;
+      padding: 1rem;
+      background: var(--dark-2);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      color: var(--light);
+      font-size: 1rem;
+      transition: all 0.3s;
+    }
+    
+    .form-input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+    
+    #card-element {
+      padding: 1rem;
+      background: var(--dark-2);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+    }
+    
+    .submit-button {
+      width: 100%;
+      padding: 1.25rem;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-top: 1rem;
+    }
+    
+    .submit-button:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+    }
+    
+    .submit-button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    
+    .payment-methods {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin: 2rem 0;
+      flex-wrap: wrap;
+    }
+    
+    .payment-method-icon {
+      width: 50px;
+      height: 30px;
+      background: white;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #333;
+    }
+    
+    .security-badges {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin: 2rem 0;
+      flex-wrap: wrap;
+    }
+    
+    .security-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+    
+    .guarantee {
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid var(--success);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin: 2rem 0;
+      text-align: center;
+    }
+    
+    .guarantee-icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .error-message {
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid var(--danger);
+      color: var(--danger);
+      padding: 1rem;
+      border-radius: 10px;
+      margin: 1rem 0;
+      display: none;
+    }
+    
+    .success-message {
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid var(--success);
+      color: var(--success);
+      padding: 1rem;
+      border-radius: 10px;
+      margin: 1rem 0;
+      display: none;
+    }
+    
+    .faq-section {
+      margin-top: 4rem;
+    }
+    
+    .faq-item {
+      background: var(--dark-2);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin: 1rem 0;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .faq-item:hover {
+      background: var(--dark-3);
+    }
+    
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+    }
+    
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s;
+      color: var(--gray);
+      padding-top: 0;
+    }
+    
+    .faq-item.active .faq-answer {
+      max-height: 200px;
+      padding-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  
+  <div id="particles"></div>
+
+  <!-- Navegación -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <div class="module-carousel">
+          <div class="module-carousel-track">
+            <span class="module-name">DESPERDICIO X</span>
+            <span class="module-name">PROYECTO X</span>
+            <span class="module-name">OPTIMIZADOR X</span>
+            <span class="module-name">TABLERO X</span>
+            <span class="module-name">VETAS X</span>
+            <span class="module-name">REVELAR X</span>
+            <span class="module-name">TAGS X</span>
+            <span class="module-name">PINTAR X</span>
+          </div>
+        </div>
+      </div>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html" class="nav-link">Inicio</a></li>
+        <li><a href="descargas.html" class="nav-link">Descargar</a></li>
+        <li><a href="tutoriales.html" class="nav-link">Tutoriales</a></li>
+        <li><a href="comprar.html" class="nav-link btn-comprar">Comprar $1 USD/mes</a></li>
+      </ul>
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="pricing-hero">
+    <div class="container">
+      <!-- Círculo de Unidad (Plugin con causa) -->
+      <div class="divine-circle-container" style="margin: 0 auto;">
+        <svg class="divine-circle-svg" viewBox="0 0 200 200">
+          <!-- Círculo blanco principal que se dibuja -->
+          <circle class="main-circle" 
+                  cx="100" 
+                  cy="100" 
+                  r="50" 
+                  fill="none" 
+                  stroke="rgba(255, 255, 255, 0.9)" 
+                  stroke-width="3"/>
+          
+          <!-- Destello en la punta del trazo -->
+          <circle class="drawing-tip-glow" 
+                  cx="100" 
+                  cy="50" 
+                  r="4" 
+                  fill="rgba(234, 179, 8, 0.8)"/>
+          
+          <!-- Los 3 puntos en el camino del círculo -->
+          <circle class="unity-point point-1" cx="100" cy="50" r="3.5" fill="rgba(239, 68, 68, 0.9)"/>
+          <circle class="unity-point point-2" cx="143.3" cy="125" r="3.5" fill="rgba(249, 115, 22, 0.9)"/>
+          <circle class="unity-point point-3" cx="56.7" cy="125" r="3.5" fill="rgba(234, 179, 8, 0.9)"/>
+          
+          <!-- Destellos que aparecen cuando el trazo toca cada punto -->
+          <circle class="connection-flash flash-1" cx="100" cy="50" r="8" fill="rgba(239, 68, 68, 0.3)"/>
+          <circle class="connection-flash flash-2" cx="143.3" cy="125" r="8" fill="rgba(249, 115, 22, 0.3)"/>
+          <circle class="connection-flash flash-3" cx="56.7" cy="125" r="8" fill="rgba(234, 179, 8, 0.3)"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="section">
+    <div class="pricing-container">
+      
+      <div class="pricing-card">
+        <div class="price-header">
+          <h2>Plan Mensual</h2>
+          <div class="price-amount">$1 USD</div>
+          <p class="price-period">¿Listo para trabajar profesionalmente?</p>
+        </div>
+
+        <ul class="features-list">
+          <li>
+            <div class="feature-icon">✓</div>
+            <span>11 módulos profesionales completos</span>
+          </li>
+          <li>
+            <div class="feature-icon">✓</div>
+            <span>Actualizaciones automáticas incluidas</span>
+          </li>
+          <li>
+            <div class="feature-icon">✓</div>
+            <span>Nuevos módulos sin costo adicional</span>
+          </li>
+          <li>
+            <div class="feature-icon">✓</div>
+            <span>Soporte por email</span>
+          </li>
+          <li>
+            <div class="feature-icon">✓</div>
+            <span>Acceso a todos los tutoriales</span>
+          </li>
+          <li>
+            <div class="feature-icon">✓</div>
+            <span>Compatible Windows y Mac</span>
+          </li>
+          <li>
+            <div class="feature-icon">✓</div>
+            <span>Licencia vinculada a 1 computadora</span>
+          </li>
+        </ul>
+
+        <div class="guarantee" style="padding: 2rem; text-align: center;">
+          <img src="images/x-colorida.png" alt="XVETA X" style="max-width: 150px; height: auto; margin: 0 auto; display: block;">
+        </div>
+
+        <!-- Formulario de Pago -->
+        <div class="payment-form">
+          <h3 style="margin-bottom: 1.5rem;">💳 Información de Pago</h3>
+          
+          <div id="error-message" class="error-message"></div>
+          <div id="success-message" class="success-message"></div>
+
+          <form id="payment-form">
+            <div class="form-group">
+              <label class="form-label" for="machine-id">Machine ID</label>
+              <input 
+                type="text" 
+                id="machine-id" 
+                class="form-input" 
+                placeholder="ID de tu computadora"
+                required
+              >
+              <small style="color: var(--gray); display: block; margin-top: 0.5rem;">
+                La licencia será vinculada a este Machine ID único
+              </small>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="email">Email</label>
+              <input 
+                type="email" 
+                id="email" 
+                class="form-input" 
+                placeholder="tu@email.com"
+                required
+              >
+              <small style="color: var(--gray); display: block; margin-top: 0.5rem;">
+                Tu licencia será enviada a este email
+              </small>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="user-name">Nombre de Usuario</label>
+              <input 
+                type="text" 
+                id="user-name" 
+                class="form-input" 
+                placeholder="Tu nombre completo"
+                required
+              >
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Información de Tarjeta</label>
+              <div id="card-element"></div>
+            </div>
+
+            <button type="submit" id="submit-button" class="submit-button">
+              🔒 Pagar $1 USD/mes de forma segura
+            </button>
+          </form>
+
+          <div class="payment-methods">
+            <div class="payment-method-icon">VISA</div>
+            <div class="payment-method-icon">MC</div>
+            <div class="payment-method-icon">AMEX</div>
+            <div class="payment-method-icon">PayPal</div>
+          </div>
+
+          <div class="security-badges">
+            <div class="security-badge">
+              <span>🔒</span>
+              <span>Encriptación SSL</span>
+            </div>
+            <div class="security-badge">
+              <span>🛡️</span>
+              <span>Pago Seguro</span>
+            </div>
+            <div class="security-badge">
+              <span>✓</span>
+              <span>PCI Compliant</span>
+            </div>
+          </div>
+
+          <p style="text-align: center; color: var(--gray); font-size: 0.9rem; margin-top: 1.5rem;">
+            Procesado de forma segura por Stripe.<br>
+            Tu información nunca es almacenada en nuestros servidores.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- FAQ -->
+      <div class="faq-section">
+        <h2 style="text-align: center; margin-bottom: 2rem;">Preguntas Frecuentes</h2>
+
+        <div class="faq-item" onclick="toggleFAQ(this)">
+          <div class="faq-question">
+            <span>¿Cómo funciona la suscripción?</span>
+            <span>▼</span>
+          </div>
+          <div class="faq-answer">
+            Pagas $1 USD por mes y recibes acceso completo a todos los módulos. Se renueva automáticamente cada mes. Puedes cancelar en cualquier momento sin penalización.
+          </div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFAQ(this)">
+          <div class="faq-question">
+            <span>¿Cómo recibo mi licencia?</span>
+            <span>▼</span>
+          </div>
+          <div class="faq-answer">
+            Inmediatamente después del pago, recibirás un email con tu archivo de licencia (.lic) y las instrucciones de activación.
+          </div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFAQ(this)">
+          <div class="faq-question">
+            <span>¿Puedo usar la licencia en varias computadoras?</span>
+            <span>▼</span>
+          </div>
+          <div class="faq-answer">
+            No, cada licencia está vinculada a una única computadora por seguridad.
+          </div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFAQ(this)">
+          <div class="faq-question">
+            <span>¿Qué incluyen las actualizaciones?</span>
+            <span>▼</span>
+          </div>
+          <div class="faq-answer">
+            Todas las mejoras, correcciones de bugs y nuevos módulos están incluidos sin costo adicional mientras tu suscripción esté activa.
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2025 XVETA Suite. Todos los derechos reservados.</p>
+        <p>Desarrollado con ❤️ por XAM</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/particles.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/stripe-checkout.js"></script>
+  <script>
+    function toggleFAQ(element) {
+      element.classList.toggle('active');
+    }
+  </script>
+</body>
+</html>
