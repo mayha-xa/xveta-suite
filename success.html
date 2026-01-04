@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¡Pago Exitoso! - XVETA</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .success-container {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    
+    .success-card {
+      background: var(--dark-2);
+      border-radius: 20px;
+      padding: 4rem 3rem;
+      max-width: 600px;
+      text-align: center;
+      border: 2px solid #22c55e;
+      box-shadow: 0 20px 60px rgba(34, 197, 94, 0.3);
+    }
+    
+    .success-icon {
+      font-size: 5rem;
+      margin-bottom: 2rem;
+      animation: successPulse 2s ease-in-out infinite;
+    }
+    
+    @keyframes successPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+    
+    .success-card h1 {
+      color: #22c55e;
+      margin-bottom: 1rem;
+      font-size: 2.5rem;
+    }
+    
+    .success-card p {
+      color: var(--gray);
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+    
+    .info-box {
+      background: rgba(102, 126, 234, 0.1);
+      border-left: 4px solid var(--primary);
+      padding: 1.5rem;
+      border-radius: 10px;
+      margin: 2rem 0;
+      text-align: left;
+    }
+    
+    .info-box h3 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+    }
+    
+    .info-box ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .info-box li {
+      color: var(--light);
+      margin-bottom: 0.5rem;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+    
+    .info-box li:before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #22c55e;
+      font-weight: bold;
+    }
+    
+    .btn-home {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: 1rem 2rem;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: 600;
+      transition: transform 0.3s ease;
+    }
+    
+    .btn-home:hover {
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="success-container">
+    <div class="success-card">
+      <div class="success-icon">✅</div>
+      
+      <h1>¡Pago Exitoso!</h1>
+      
+      <p>
+        Tu suscripción a <strong>XVETA Suite</strong> ha sido activada correctamente.
+      </p>
+      
+      <div class="info-box">
+        <h3>📧 Próximos Pasos:</h3>
+        <ul>
+          <li>Recibirás tu archivo de licencia (.lic) por email en los próximos minutos</li>
+          <li>El email será enviado a la dirección que proporcionaste</li>
+          <li>Revisa tu bandeja de entrada y spam</li>
+          <li>Sigue las instrucciones del email para activar tu licencia</li>
+        </ul>
+      </div>
+      
+      <div class="info-box">
+        <h3>💳 Detalles de tu Suscripción:</h3>
+        <ul>
+          <li>Plan: XVETA Suite Mensual</li>
+          <li>Precio: $1 USD/mes</li>
+          <li>Renovación automática cada mes</li>
+          <li>Puedes cancelar en cualquier momento</li>
+        </ul>
+      </div>
+      
+      <p style="color: var(--light); font-weight: 600; margin-top: 2rem;">
+        ¿No recibiste el email?
+      </p>
+      <p>
+        Espera unos minutos. Si no llega, contáctanos en la sección de <a href="ayuda.html" style="color: var(--primary);">Ayuda</a>
+      </p>
+      
+      <a href="index.html" class="btn-home">
+        🏠 Volver al Inicio
+      </a>
+    </div>
+  </div>
+
+  <script src="js/particles.js"></script>
+  <script src="js/animations.js"></script>
+</body>
+</html>
