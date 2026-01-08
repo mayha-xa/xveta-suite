@@ -1,0 +1,17 @@
+{
+  "name": "xveta-license-automation",
+  "version": "1.0.0",
+  "description": "Automatización de licencias XVETA con Node.js",
+  "main": "servidor.js",
+  "scripts": {
+    "start": "node servidor.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "axios": "^1.6.0",
+    "googleapis": "^128.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
