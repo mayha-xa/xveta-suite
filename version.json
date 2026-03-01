@@ -1,0 +1,18 @@
+{
+  "version": "1.0.3",
+  "fecha": "2025-12-26",
+  "notas": "🚀 XVETA Suite v1.0.3\n\n✅ Corrección de bugs en sistema de licencias\n✅ Optimización de velocidad al iniciar (80% más rápido)\n✅ Mejora en interfaz de Panel de Control\n✅ Corrección en verificación de Machine ID\n✅ URLs actualizadas en menús de ayuda\n\nDescarga esta versión y disfruta de mejor rendimiento.",
+  "url_descarga": "https://github.com/mayha-xa/xveta-suite/releases/latest/download/XVETA-MADRE.rbz",
+  "cambios": [
+    "Corrección de bugs en licencias",
+    "Optimización de velocidad (80% mejora)",
+    "Mejoras en UI del Panel de Control",
+    "Corrección Machine ID",
+    "URLs actualizadas"
+  ],
+  "requisitos": {
+    "sketchup_version": "2020+",
+    "sistema_operativo": ["Windows", "macOS"],
+    "ruby_version": "2.5+"
+  }
+}
